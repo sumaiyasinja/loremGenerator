@@ -24,32 +24,63 @@
         <button class="btn btn-block w-1/3 bg-white border-base-400" id="btn-generate">Generate</button>
     </div>
     
-    
     </div>
 
+    <!-- script add here now  -->
+
       <script>
-      
-      document.getElementById('btn-generate').addEventListener('click', function(){ 
-        generateLorem() //calling another funtion
-      })
 
 
-      function  generateLorem(){
-        const loremConntainer = document.getElementById('lorem-conntainer');
-        let newParagraph = document.createElement('p');
-        let textAreaValue = document.getElementById('text-area').value ;
-        newParagraph.innerText= textAreaValue
 
-        
-        //Text area Null value won't count
-        if(newParagraph.textContent.trim() !== ""){ 
-           
-            loremConntainer.appendChild(newParagraph)
+
+    document.getElementById('btn-generate').addEventListener('click',function () {
+      const getValueGenaret = document.getElementById("text-area").value;
+      const convertValue = parseInt(getValueGenaret);
+
+     const getGenareteLorem =  generateLoremIpsum(convertValue)
+     document.getElementById('lorem-conntainer').innerText = getGenareteLorem;
+
+     console.log(getGenareteLorem)
+    })
+
+    function generateLoremIpsum(wordCount) {
+            const words = [
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum", 
+                "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
+                "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua"
+            ];
+            
+            let loremIpsum = "";
+            for (let i = 0; i < wordCount; i++) {
+                const randomIndex = Math.floor(Math.random() * words.length);
+                loremIpsum += words[randomIndex] + " ";
+            }
+            return loremIpsum.trim(); 
         }
 
-        document.getElementById('text-area').value='' //reset text area input box    
 
-      }
+
+ 
+      // document.getElementById('btn-generate').addEventListener('click', function(){ 
+      //   generateLorem() //calling another funtion
+      // })
+
+      // function  generateLorem(){
+      //   const loremConntainer = document.getElementById('lorem-conntainer');
+      //   let newParagraph = document.createElement('p');
+      //   let textAreaValue = document.getElementById('text-area').value ;
+      //   newParagraph.innerText= textAreaValue;
+
+        
+      //   //Text area Null value won't count
+      //   if(newParagraph.textContent.trim() !== ""){ 
+           
+      //       loremConntainer.appendChild(newParagraph)
+      //   }
+
+      //   document.getElementById('text-area').value='' //reset text area input box    
+
+      // }
     
         </script>
     
